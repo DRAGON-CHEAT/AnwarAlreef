@@ -184,6 +184,89 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
     header { flex-direction: row; justify-content: space-between; }
     .hero-slider { height: 150px; }
 }
+
+/* Side Stack Widget */
+#side-stack {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Reduced gap */
+    pointer-events: none;
+}
+
+.side-item {
+    display: flex;
+    align-items: center;
+    width: 180px; /* Reduced width */
+    height: 45px; /* Reduced height */
+    border-radius: 25px 0 0 25px; /* Smaller radius */
+    color: white;
+    transform: translateX(135px); /* Adjusted hidden position (180 - 45 = 135) */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth slide */
+    pointer-events: auto;
+    box-shadow: -2px 2px 6px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+/* Hover Effect: Slide out when mouse is over the item */
+.side-item:hover {
+    transform: translateX(0); /* Fully visible */
+}
+
+/* Store Colors */
+.side-item.website { background: #224dc2; }
+.side-item.apple { background: #000000; }
+.side-item.google { background: #e2c20e; }
+
+/* Icon Section */
+.side-item .icon-box {
+    width: 45px; /* Match height */
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    background: inherit;
+    z-index: 2;
+}
+.side-item .icon-box svg {
+    width: 22px; /* Smaller icon */
+    height: 22px;
+    fill: white;
+}
+
+/* Link Section */
+.side-item .link-text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 8px;
+    padding-right: 15px;
+    text-align: left;
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    direction: ltr;
+    white-space: nowrap;
+}
+.side-item .link-text small {
+    font-size: 8px; /* Smaller text */
+    opacity: 0.9;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+.side-item .link-text span {
+    font-size: 12px; /* Smaller text */
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+}
+
 </style>
 </head>
 <body>
@@ -194,20 +277,24 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
     <ul>
         <li onclick="toggleDropdown(this)">الرئيسية
             <ul>
-                <li><a href="#">قسم 1</a></li>
-                <li><a href="#">قسم 2</a></li>
+                <li><a href="#">الرئيسية </a></li>
+                <li><a href="#">الرئيسية </a></li>
             </ul>
         </li>
         <li onclick="toggleDropdown(this)">العقارات
             <ul>
-                <li><a href="#">مجمع الرياحين</a></li>
-                <li><a href="#">مجمع الزيتون</a></li>
+               <li><a href="#">مجمع الرياحين (941)</a></li>
+            <li><a href="#">مجمع الزيتون (1231)</a></li>
+            <li><a href="#">مجمع ابراج النحلة (731)</a></li>
+            <li><a href="#">مجمع الود السكتي (931)</a></li>
+            <li><a href="#">مجمع المربع الذهبي (431)</a></li>
             </ul>
         </li>
         <li onclick="toggleDropdown(this)">اتصل بنا
             <ul>
-                <li><a href="#">العنوان</a></li>
-                <li><a href="#">رقم الهاتف</a></li>
+                <li><a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3333.938999356288!2d44.3531073!3d33.3204102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15577ec7ce719989%3A0x271c87f531d7f0f!2z2YXZiNmEINin2YTZhdmG2LXZiNix!5e0!3m2!1sar!2siq!4v1747182102858!5m2!1sar!2siq">بغداد - مقابل مول المنصور - مجمع المنصور رويل</a></li>
+                <li><a href="tel:+9647818557557">أثير: 07818557557 </a></li>
+                <li><a href="tel:07718557557">أسيا: 07718557557</a></li>
             </ul>
         </li>
     </ul>
@@ -256,9 +343,9 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
         <ul>
             <li><a href="#">مجمع الرياحين (941)</a></li>
             <li><a href="#">مجمع الزيتون (1231)</a></li>
-            <li><a href="#">مجمع ابراج النحلة (7231)</a></li>
-            <li><a href="#">مجمع الود السكتي (9231)</a></li>
-            <li><a href="#">مجمع المربع الذهبي (4231)</a></li>
+            <li><a href="#">مجمع ابراج النحلة (731)</a></li>
+            <li><a href="#">مجمع الود السكتي (931)</a></li>
+            <li><a href="#">مجمع المربع الذهبي (431)</a></li>
         </ul>
 
         <h4>مواقع التواصل الاجتماعي</h4>
@@ -280,14 +367,52 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
         <div>
             <h4>اتصل بنا</h4>
             <p>📞 <a href="tel:+9647818557557" style="color: white; text-decoration: none;">07818557557</a></p>
+            <p>📞 <a href="tel:07718557557" style="color: white; text-decoration: none;">07718557557</a></p>
+            
             <p>✉︎ <a href="mailto:info@iraqanwaralreef@gmail.com" style="color: white; text-decoration: none;">iraqanwaralreef@gmail.com</a></p>
             <p>⚐ www.AnwarAlreef.com</p>
         </div>
     </div>
     <div class="footer-bottom">
-        © شركة أنوار الريف جميع الحقوق محفوظة.
+        © 2025-2026 AnwarAlreef
     </div>
 </footer>
+
+<!-- Side Stack Widget -->
+<div id="side-stack">
+    <!-- Website Link -->
+    <div class="side-item website">
+        <div class="icon-box">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        </div>
+        <a href=" " target="_blank" class="link-text">
+            <small>Visit our website</small>
+            <span>AnwarAlreef.com</span>
+        </a>
+    </div>
+
+    <!-- App Store Link -->
+    <div class="side-item apple">
+        <div class="icon-box">
+            <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.98 1.08-3.11-1.06.05-2.31.71-3.06 1.61-.69.85-1.28 2.15-1.12 3.19 1.19.09 2.38-.86 3.1-1.69z"/></svg>
+        </div>
+        <a href=" " target="_blank" class="link-text">
+            <small>Download on the</small>
+            <span>App Store</span>
+        </a>
+    </div>
+
+    <!-- Google Play Link -->
+    <div class="side-item google">
+        <div class="icon-box">
+            <svg viewBox="0 0 24 24"><path d="M3 20.5v-17c0-.83.67-1.5 1.5-1.5.2 0 .39.04.57.11L18 10.3c.77.44.77 1.55 0 1.99L5.07 20.39c-.18.07-.37.11-.57.11-.83 0-1.5-.67-1.5-1.5zM6 4.44l8.83 7.56L6 19.56V4.44z"/></svg>
+        </div>
+        <a href="https://play.google.com/store/" target="_blank" class="link-text">
+            <small>GET IT ON</small>
+            <span>Google Play</span>
+        </a>
+    </div>
+</div>
 
 <script>
 /* Sidebar toggle */
