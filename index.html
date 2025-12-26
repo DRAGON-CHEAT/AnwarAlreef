@@ -189,26 +189,27 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
 #side-stack {
     position: fixed;
     top: 50%;
-    right: 0;
+    left: 0;          /* بدل right */
+    right: auto;
     transform: translateY(-50%);
     z-index: 2000;
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Reduced gap */
+    gap: 8px;
     pointer-events: none;
 }
 
 .side-item {
     display: flex;
     align-items: center;
-    width: 180px; /* Reduced width */
-    height: 45px; /* Reduced height */
-    border-radius: 25px 0 0 25px; /* Smaller radius */
+    width: 180px;
+    height: 45px;
+    border-radius: 0 25px 25px 0; /* عكس الحواف */
     color: white;
-    transform: translateX(135px); /* Adjusted hidden position (180 - 45 = 135) */
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth slide */
+    transform: translateX(-135px); /* إخفاء لليسار */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     pointer-events: auto;
-    box-shadow: -2px 2px 6px rgba(0,0,0,0.15);
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
     overflow: hidden;
 }
 
@@ -265,6 +266,33 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
     font-weight: bold;
     letter-spacing: 0.3px;
     line-height: 1.2;
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 19px;
+    right: 13px;
+    width: 52px;
+    height: 53px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float img {
+    width: 30px;
+    height: 30px;
 }
 
 </style>
@@ -412,6 +440,10 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
         </a>
     </div>
 </div>
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/9647818557557" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <img src="wwtt1.png" alt="WhatsApp">
+</a>
 
 <script>
 /* Sidebar toggle */
@@ -434,7 +466,7 @@ function showSlide() {
     if(slideIndex >= totalSlides) slideIndex = 0;
     slides.style.transform = `translateX(-${slideIndex * 100}%)`;
 }
-setInterval(showSlide, 3000); // 3 ثواني لكل صورة
+setInterval(showSlide, 4000); // 3 ثواني لكل صورة
 </script>
 
 </body>
