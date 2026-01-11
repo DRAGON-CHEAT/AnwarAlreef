@@ -93,20 +93,24 @@ header .header-right img { max-height: 50px; }
 .hero-slider {
     position: relative;
     overflow: hidden;
-    height: 200px;
-    margin: 20px auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;   /* نسبة سينمائية ممتازة */
+    max-height: 500px;     /* يمنع التمدد المفرط في الشاشات الكبيرة */
     border-radius: 10px;
+    margin: 20px auto;
 }
+
 .hero-slider .slides {
     display: flex;
+    height: 100%;
     transition: transform 0.5s ease-in-out;
 }
+
 .hero-slider .slide {
     min-width: 100%;
-    height: 200px;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    border-radius: 10px;
     flex-shrink: 0;
 }
 .hero-slider .slide h2 {
@@ -189,27 +193,26 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
 #side-stack {
     position: fixed;
     top: 50%;
-    left: 0;          /* بدل right */
-    right: auto;
+    right: 0;
     transform: translateY(-50%);
     z-index: 2000;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 8px; /* Reduced gap */
     pointer-events: none;
 }
 
 .side-item {
     display: flex;
     align-items: center;
-    width: 180px;
-    height: 45px;
-    border-radius: 0 25px 25px 0; /* عكس الحواف */
+    width: 180px; /* Reduced width */
+    height: 45px; /* Reduced height */
+    border-radius: 25px 0 0 25px; /* Smaller radius */
     color: white;
-    transform: translateX(-135px); /* إخفاء لليسار */
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(135px); /* Adjusted hidden position (180 - 45 = 135) */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth slide */
     pointer-events: auto;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+    box-shadow: -2px 2px 6px rgba(0,0,0,0.15);
     overflow: hidden;
 }
 
@@ -268,33 +271,6 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
     line-height: 1.2;
 }
 
-/* Floating WhatsApp Button */
-.whatsapp-float {
-    position: fixed;
-    bottom: 19px;
-    right: 13px;
-    width: 52px;
-    height: 53px;
-    background-color: #25D366;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3000;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1);
-}
-
-.whatsapp-float img {
-    width: 30px;
-    height: 30px;
-}
-
 </style>
 </head>
 <body>
@@ -330,7 +306,7 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
 <header>
     <span class="sidebar-toggle" onclick="toggleSidebar()">☰</span>
     <div class="header-center">
-        <img src="images.png" alt="الصورة الوسطية">
+        
     </div>
     <div class="header-right">
         <img src="Untitled-9.png" alt="شعار الشركة">
@@ -380,7 +356,7 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
             <a href="https://www.facebook.com/share/1AnMtHxc84/?mibextid=wwXIfr"><img src="fffffffff.png" alt="Facebook"></a>
             <a href="https://wa.me/9647818557557"><img src="wwtt1.png" alt="WhatsApp"></a>
             <a href="https://www.instagram.com/anwar_alreef?igsh=NTg4eWVtNGJuYTI5"><img src="iiiiiiiiin1.png" alt="Instagram"></a>
-            <a href="https://www.tiktok.com/@anwar_alreef?_r=1&_t=ZS-92XaRu89Pym"><img src="7777.png" alt="TikTok"></a>
+            <a href="#"><img src="7777.png" alt="TikTok"></a>
         </div>
     </aside>
 </div>
@@ -388,12 +364,12 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
 <footer>
     <div class="container footer-container">
         <div>
-            <h4> شركة أنوار الريف</h4>
+            <h4>أنوار الريف</h4>
             <p>شركة أنوار الريف للاستثمار والتطوير العقاري تجسد رؤية طموحة ترتكز على تحويل الفرص العقارية إلى مشاريعٍ نابضةٍ بالحياة من خلال تكامل الخبرة والابتكار. انطلقت الشركة بهدف تقديم حلول إسكانية وتجارية متكاملة تلبي احتياجات المجتمع العصري.</p>
         </div>
         <div>
             <h4>اتصل بنا</h4>
-            <p>📞 <a href="tel:07818557557" style="color: white; text-decoration: none;">07818557557</a></p>
+            <p>📞 <a href="tel:+9647818557557" style="color: white; text-decoration: none;">07818557557</a></p>
             <p>📞 <a href="tel:07718557557" style="color: white; text-decoration: none;">07718557557</a></p>
             
             <p>✉︎ <a href="mailto:info@iraqanwaralreef@gmail.com" style="color: white; text-decoration: none;">iraqanwaralreef@gmail.com</a></p>
@@ -440,10 +416,6 @@ footer .footer-bottom { text-align: center; margin-top: 10px; font-size: 13px; }
         </a>
     </div>
 </div>
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/9647818557557" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
-    <img src="wwtt1.png" alt="WhatsApp">
-</a>
 
 <script>
 /* Sidebar toggle */
@@ -466,9 +438,8 @@ function showSlide() {
     if(slideIndex >= totalSlides) slideIndex = 0;
     slides.style.transform = `translateX(-${slideIndex * 100}%)`;
 }
-setInterval(showSlide, 4000); // 3 ثواني لكل صورة
+setInterval(showSlide, 3000); // 3 ثواني لكل صورة
 </script>
 
 </body>
 </html>
-
